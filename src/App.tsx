@@ -11,21 +11,30 @@ import { useSelector } from 'react-redux';
 // import { Root } from 'react-dom/client';
 import { RootState } from './Store/store';
 import ProtectedRoutes from './Routes/ProtectedRoutes';
+import PublicRoute from './Routes/PublicRoutes';
 // import {ProtectedRoutes} from './Routes/ProtectedRoutes';
 // import { AuthState } from './types/authTypes';
 function App() {
-  const {isAuthenticated}=useSelector((state:RootState)=>state.root)
+  const isAuthenticated=useSelector((state:RootState)=>state.root.isAuthenticated)
+  console.log(isAuthenticated)
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/admin/dashboard" element={
           <ProtectedRoutes isAuthenticated={isAuthenticated} isAdmin={true} adminRoute={true} >
             <Dashboard />
           </ProtectedRoutes>
         } />
+
+        <Route path="/" element={<Home />} />
+        <Route element={<PublicRoute isAuthenticated={isAuthenticated}/>}>
         <Route path="/login" element={<Login />} />
+
+        </Route>
+
+          
+        
         {/* <Route path="/profile" element={<ProtectedRoutes isAuthenticated={isAuthenticated}>
           <Profile />
         </ProtectedRoutes>} />
@@ -41,7 +50,6 @@ function App() {
           <Route path="/myorders" element={<MyOrders />} />
           <Route path="/blog" element={<MyBlog />} />
         </Route>
-
       </Routes>
     </Router>
   );

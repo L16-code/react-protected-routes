@@ -1,12 +1,6 @@
 // import { Children } from "react";
-import { ReactNode } from "react";
 import { Navigate ,Outlet } from "react-router-dom"
-interface ProtectedRoutesProps {
-    isAuthenticated: boolean;
-    children?: ReactNode;
-    adminRoute:boolean;
-    isAdmin:boolean;
-}
+import {ProtectedRoutesProps} from '../types/authTypes'
 
 const ProtectedRoutes: React.FC<ProtectedRoutesProps> = ({ isAuthenticated,children ,adminRoute,isAdmin }) => {
     if (!isAuthenticated) {
