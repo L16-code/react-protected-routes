@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../types/RootInterface"
-import { clearCart, removeFromCart } from "../../actions/rootReducer"
+import { clearCart, placeOrder, removeFromCart } from "../../actions/rootReducer"
 import { useNavigate } from "react-router-dom"
 import data from "../../resources/productsData"
 import { Bounce, toast } from "react-toastify"
@@ -31,6 +31,21 @@ const Cart = () => {
         const check = confirm("Are you sure you want to Buy this item?")
         if (check) {
             toast.success('Hurray !!The Item is Placed ', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            dispatch(placeOrder(new_arr))
+            navigate("/myorders")
+            dispatch(clearCart())
+        }else{
+            toast.error('Sorry!!The Item is not Placed ', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,

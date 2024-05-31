@@ -5,7 +5,7 @@ const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
     item: { items: {} },
-    order:null,
+    orders: [],
 };
 const rootSlice = createSlice({
     name: "root",
@@ -33,10 +33,13 @@ const rootSlice = createSlice({
         clearCart: (state) => {
             state.item.items = {};
         },
-        orders:(state, action: PayloadAction<ProductWithQuantity>)=>{
-            state.order=action.payload;
+        placeOrder: (state, action: PayloadAction<ProductWithQuantity[]>) => {
+            state.orders.push({
+                id: state.orders.length + 1,
+                items: action.payload,
+            });
         }
     },
 })
-export const { login, logout, AddToCart,clearCart,removeFromCart,orders } = rootSlice.actions;
+export const { login, logout, AddToCart, clearCart, removeFromCart, placeOrder } = rootSlice.actions;
 export default rootSlice.reducer

@@ -1,14 +1,17 @@
 import { ReactNode } from "react";
 // import {ProductValueType} from ''
-import {  ProductValueType, ProductWithQuantity } from "./productType";
+import { ProductValueType, ProductWithQuantity } from "./productType";
 // src/store/types.ts
 export interface AuthState {
     isAuthenticated: boolean;
-    user: UserType|null;
+    user: UserType | null;
     item: ProductValueType;
-    order:ProductWithQuantity|null;
+    orders: Array<{
+        id: number;
+        items: ProductWithQuantity[];
+    }>;
 }
-export interface UserType{
+export interface UserType {
     username: string;
     email: string;
     password: string;
@@ -16,9 +19,9 @@ export interface UserType{
 export interface ProtectedRoutesProps {
     isAuthenticated: boolean;
     children?: ReactNode;
-    adminRoute:boolean;
-    isAdmin:boolean;
+    adminRoute: boolean;
+    isAdmin: boolean;
 }
-export interface PublicRoutesProps{
+export interface PublicRoutesProps {
     isAuthenticated: boolean;
 }
