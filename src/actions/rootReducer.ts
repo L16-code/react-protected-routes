@@ -18,6 +18,8 @@ const rootSlice = createSlice({
         logout: (state) => {
             state.isAuthenticated = false;
             state.user = null;
+            state.orders=[];
+            state.item.items = {};
         },
         AddToCart: (state, action: PayloadAction<string>) => {
             const id = action.payload;

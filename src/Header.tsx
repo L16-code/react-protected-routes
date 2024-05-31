@@ -2,10 +2,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from './Store/store';
-import { logout } from './actions/rootReducer';
+import {   logout } from './actions/rootReducer';
 
 const Header = () => {
     const dispatch =useDispatch();
+    // const logoutHandler =()=>{
+    //     dispatch(logout())
+    //     // dispatch()
+    // }
     const {isAuthenticated}=useSelector((state:RootState)=>state.root)
     return (
         <nav>
