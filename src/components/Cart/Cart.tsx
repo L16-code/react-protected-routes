@@ -4,15 +4,8 @@ import { clearCart, removeFromCart } from "../../actions/rootReducer"
 import { useNavigate } from "react-router-dom"
 import data from "../../resources/productsData"
 import { Bounce, toast } from "react-toastify"
+import { ProductWithQuantity } from "../../types/productType"
 
-type ProductWithQuantity = {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    description: string;
-    quantity: number;
-};
 const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()

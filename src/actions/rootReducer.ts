@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthState, UserType } from "../types/authTypes";
-import { ProductItems } from "../types/productType";
+import { ProductWithQuantity } from "../types/productType";
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
@@ -33,8 +33,8 @@ const rootSlice = createSlice({
         clearCart: (state) => {
             state.item.items = {};
         },
-        orders:(state, action: PayloadAction<ProductItems>)=>{
-            state.order= action.payload;
+        orders:(state, action: PayloadAction<ProductWithQuantity>)=>{
+            state.order=action.payload;
         }
     },
 })
