@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 // import {ProductValueType} from ''
-import { ProductValueType } from "./productType";
+import { ProductItems, ProductValueType } from "./productType";
 // src/store/types.ts
 export interface AuthState {
     isAuthenticated: boolean;
     user: UserType|null;
     item: ProductValueType;
+    order:ProductItems|null;
 }
 export interface UserType{
     username: string;

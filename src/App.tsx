@@ -6,12 +6,13 @@ import Login from './components/Login/login';
 import Dashboard from './components/Dashboard/dashboard';
 import Profile from './components/Profile/Profile';
 import MyOrders from './components/MyOrders/orders';
-import MyBlog from './components/MyBlog/blog';
+// import MyBlog from './components/MyBlog/blog';
 import { useSelector } from 'react-redux';
 // import { Root } from 'react-dom/client';
 import { RootState } from './Store/store';
 import ProtectedRoutes from './Routes/ProtectedRoutes';
 import PublicRoute from './Routes/PublicRoutes';
+import Cart from './components/Cart/Cart';
 // import {ProtectedRoutes} from './Routes/ProtectedRoutes';
 // import { AuthState } from './types/authTypes';
 function App() {
@@ -48,7 +49,7 @@ function App() {
         <Route element={<ProtectedRoutes isAuthenticated={isAuthenticated} adminRoute={false}  isAdmin={false}/>}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/myorders" element={<MyOrders />} />
-          <Route path="/blog" element={<MyBlog />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </Router>

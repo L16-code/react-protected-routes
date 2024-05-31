@@ -1,16 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthState, UserType } from "../types/authTypes";
-// import { ProductValueType } from "../types/productType";
-// import { login,logout } from "./action";
-
+import { ProductItems } from "../types/productType";
 const initialState: AuthState = {
     isAuthenticated: false,
     user: null,
-    item: { items: {} }
+    item: { items: {} },
+    order:null,
 };
-// interface CartState{
-//     item:{[id:string]:number};
-// }
 const rootSlice = createSlice({
     name: "root",
     initialState,
@@ -31,8 +27,16 @@ const rootSlice = createSlice({
                 state.item.items[id] = 1;
             }
         },
-
+        removeFromCart: (state, action: PayloadAction<string>) => {
+            delete state.item.items[action.payload];
+        },
+        clearCart: (state) => {
+            state.item.items = {};
+        },
+        orders:(state, action: PayloadAction<ProductItems>)=>{
+            state.order= action.payload;
+        }
     },
 })
-export const { login, logout, AddToCart } = rootSlice.actions;
+export const { login, logout, AddToCart,clearCart,removeFromCart,orders } = rootSlice.actions;
 export default rootSlice.reducer
